@@ -5,13 +5,18 @@ import BrewForm from '../shared/BrewForm'
 import apiUrl from '../../apiConfig'
 
 const NewBrew = (props) => {
-  // const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { style: '', amount: '' }, steep: { type: '', quant: '', time: '' }, boil: '', sugar: { type: '', quant: '', style: '' }, hop: { type: '', quant: '', time: '' }, post: { thing: '', quant: '' }, yeast: { thing: '', quant: '' }, primary: '', secondary: '' })
-  const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { style: '', amount: '' }, steep: [], boil: { time: '', additions: [] }, postBoil: [], tastingNotes: '' })
+  // { type: '', time: '', quantity: '' } generically for all 3 (steep, boil, post)
+  const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { beerStyle: '', amount: '' }, steep: [], boilTime: '', boil: [], postBoil: [], tastingNotes: '' })
   // const [createdBrew, setCreatedBrewId] = useState(null)
 
   const handleChange = event => {
-    event.persist()
-    setBrew(brew => ({ ...brew, [event.target.name]: event.target.value }))
+    console.log(brew)
+    setBrew({ ...brew, [event.target.name]: event.target.value })
+  }
+
+  const handleArray = event => {
+    console.log(event.target.name)
+    setBrew({ ...brew, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = event => {
@@ -35,6 +40,8 @@ const NewBrew = (props) => {
       brew={brew}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      handleArray={handleArray}
+      setBrew={setBrew}
       cancelPath="/"
     />
   )
