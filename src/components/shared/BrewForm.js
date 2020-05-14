@@ -27,6 +27,11 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
   const [counter, setCounter] = useState({ steep: 0, boil: 0, postBoil: 0 })
   const [children, setChildren] = useState([])
 
+  const Console = prop => {
+    console[Object.keys(prop)[0]](...Object.values(prop))
+    return null
+  }
+
   const addInput = (divName) => {
     setCounter(counter => ({ ...counter, [divName]: (counter[divName] + 1) }))
   }
@@ -37,6 +42,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
     if (counter.steep !== 0) {
       createNewSteep()
       setChildren(children => [...children, { brew: brew }])
+      console.log(brew)
     }
   }, [counter.steep])
   return (<FormBrew onSubmit={handleSubmit}>
@@ -55,21 +61,22 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
       name="dateStarted"
       onChange={handleChange}
     />
+    <Console log={brew.style} />
 
     <BrewInput
       theme={{ width: '40%' }}
       placeholder="What style is your brew"
-      value={brew.style.beerStyle}
-      name="style.beerStyle"
-      onChange={handleChange}
+      // value={brew.style.beerStyle}
+      name="beerStyle"
+      onChange={(event) => handleChange(event, 'style')}
     />
 
     <BrewInput
       theme={{ width: '40%' }}
       placeholder="How many gallons is your brew"
-      value={brew.style.amount}
-      name="style.amount"
-      onChange={handleChange}
+      // value={brew.style.amount}
+      name="amount"
+      onChange={(event) => handleChange(event, 'style')}
     />
     <AddInputDiv
       theme={{ width: '100%' }}

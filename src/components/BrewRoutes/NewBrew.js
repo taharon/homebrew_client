@@ -9,14 +9,18 @@ const NewBrew = (props) => {
   const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { beerStyle: '', amount: '' }, steep: [], boilTime: '', boil: [], postBoil: [], tastingNotes: '' })
   // const [createdBrew, setCreatedBrewId] = useState(null)
 
-  const handleChange = event => {
+  const handleChange = (event, extra) => {
     console.log(brew)
-    setBrew({ ...brew, [event.target.name]: event.target.value })
+    if (!extra) {
+      setBrew({ ...brew, [event.target.name]: event.target.value })
+    } else {
+      setBrew({ ...brew, [extra]: { ...brew[extra], [event.target.name]: event.target.value } })
+    }
   }
 
-  const handleArray = event => {
+  const handleArray = (event, extra, index) => {
     console.log(event.target.name)
-    setBrew({ ...brew, [event.target.name]: event.target.value })
+    setBrew({ ...brew, [extra]: { ...brew[extra][index], [event.target.name]: event.target.value } })
   }
 
   const handleSubmit = event => {
