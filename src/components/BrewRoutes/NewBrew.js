@@ -19,7 +19,7 @@ const NewBrew = (props) => {
   }
 
   const handleArray = (event, extra, index) => {
-    console.log(event.target.name)
+    console.log(event.target.value)
     setBrew({ ...brew, [extra]: { ...brew[extra][index], [event.target.name]: event.target.value } })
   }
 

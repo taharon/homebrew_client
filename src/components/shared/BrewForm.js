@@ -27,22 +27,26 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
   const [counter, setCounter] = useState({ steep: 0, boil: 0, postBoil: 0 })
   const [children, setChildren] = useState([])
 
-  const Console = prop => {
-    console[Object.keys(prop)[0]](...Object.values(prop))
-    return null
-  }
+  // const Console = prop => {
+  //   console[Object.keys(prop)[0]](...Object.values(prop))
+  //   return null
+  // }
 
   const addInput = (divName) => {
     setCounter(counter => ({ ...counter, [divName]: (counter[divName] + 1) }))
   }
   useEffect(() => {
     async function createNewSteep () {
-      await setBrew([ ...brew.steep, { type: '', quant: '', duration: ' ' } ])
+      await setBrew({ ...brew, steep: [ ...brew.steep, { type: '', quant: '', duration: ' ' } ] })
+      console.log(brew, 'added child')
+      await setChildren(children => [...children, <SteepForm brew={brew} handleArray={handleArray} id={counter.steep} key={counter.steep} />])
     }
-    if (counter.steep !== 0) {
-      createNewSteep()
-      setChildren(children => [...children, { brew: brew }])
-      console.log(brew)
+    try {
+      if (counter.steep !== 0) {
+        createNewSteep()
+      }
+    } catch (err) {
+      console.error(err)
     }
   }, [counter.steep])
   return (<FormBrew onSubmit={handleSubmit}>
@@ -61,12 +65,12 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
       name="dateStarted"
       onChange={handleChange}
     />
-    <Console log={brew.style} />
+    {/* <Console log={brew} /> */}
 
     <BrewInput
       theme={{ width: '40%' }}
       placeholder="What style is your brew"
-      // value={brew.style.beerStyle}
+      value={brew.style.beerStyle}
       name="beerStyle"
       onChange={(event) => handleChange(event, 'style')}
     />
@@ -74,7 +78,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
     <BrewInput
       theme={{ width: '40%' }}
       placeholder="How many gallons is your brew"
-      // value={brew.style.amount}
+      value={brew.style.amount}
       name="amount"
       onChange={(event) => handleChange(event, 'style')}
     />
@@ -96,10 +100,9 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         onClick={() => addInput('steep')}
       />
 
-      {children.map((child, i) => {
-        console.log(brew.steep, 'steep')
+      {children/* {children.map((child, i) => {
         return (<SteepForm brew={child.brew} handleArray={handleArray} key={i} />)
-      })}
+      })} */}
     </AddInputDiv>
 
     <br></br>

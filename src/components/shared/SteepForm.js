@@ -9,32 +9,36 @@ const BrewInput = styled.input`
 `
 
 const SteepForm = ({ brew, handleArray, id }) => {
-  console.log(brew, 'steepform')
+  const Console = prop => {
+    console[Object.keys(prop)[0]](...Object.values(prop))
+    return null
+  }
   return (
     <Fragment>
+      <Console log={brew} />
       <BrewInput
-        key={id}
+        index={id}
         theme={{ width: '30%' }}
         placeholder="What are you steeping"
-        value={brew.steep[id].type}
+        value={brew.steep[id] ? brew.steep[id].type : ''}
         name="type"
         onChange={(event) => handleArray(event, 'steep', id)}
       />
 
       <BrewInput
-        key={id}
+        index={id}
         theme={{ width: '30%' }}
         placeholder="How much did you add"
-        value={brew.steep[id].quant}
+        // value={brew.steep[id].quant}
         name="steep[id].quant"
         onChange={handleArray}
       />
 
       <BrewInput
-        key={id}
+        index={id}
         theme={{ width: '30%' }}
         placeholder="How long did you steep for"
-        value={brew.steep[id].duration}
+        // value={brew.steep[id].duration}
         name="steep[id].duration"
         onChange={handleArray}
       />
