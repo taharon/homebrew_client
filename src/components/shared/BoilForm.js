@@ -9,18 +9,18 @@ const BrewInput = styled.input`
 `
 
 const BoilForm = ({ brew, handleArray, id }) => {
-  const Console = prop => {
-    console[Object.keys(prop)[0]](...Object.values(prop))
-    return null
-  }
+  // const Console = prop => {
+  //   console[Object.keys(prop)[0]](...Object.values(prop))
+  //   return null
+  // }
   return (
     <Fragment>
-      <Console log={brew} />
+      {/* <Console log={brew} /> */}
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
         placeholder="What did you add"
-        value={brew.boil[id].type}
+        value={brew.boil[id] ? brew.boil[id].type : ''}
         name="type"
         onChange={(event) => handleArray(event, 'boil', id)}
       />

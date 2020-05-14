@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-// import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SteepForm from './SteepForm'
 import BoilForm from './BoilForm'
 import PostBoilForm from './PostBoilForm'
+import Form from 'react-bootstrap/Form'
 
 const BrewInput = styled.input`
   text-align: center;
@@ -12,6 +12,12 @@ const BrewInput = styled.input`
   width: ${props => props.theme.width};
   margin-bottom: 10px;
 `
+
+const CreatorComment = styled.textarea`
+  display: flex;
+  margin-bottom: 10px;
+`
+
 const FormBrew = styled.form`
   display: flex;
   flex-wrap: wrap;
@@ -176,11 +182,22 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         onChange={handleChange}
       />
     </AddInputDiv>
-    <br></br>
-    <button type="submit">Submit</button>
-    <Link to={cancelPath}>
-      <button>Cancel</button>
-    </Link>
+    <AddInputDiv>
+      <CreatorComment
+        rows='5'
+        cols='90'
+        placeholder="Tasting notes"
+        value={brew.tastingNotes}
+        name='tastingNotes'
+        onChange={handleChange}
+      />
+    </AddInputDiv>
+    <Form.Group>
+      <button type="submit">{'\n'}Submit</button>
+      <Link to={cancelPath}>
+        <button>Cancel</button>
+      </Link>
+    </Form.Group>
   </FormBrew>
   )
 }

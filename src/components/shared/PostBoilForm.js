@@ -9,18 +9,18 @@ const BrewInput = styled.input`
 `
 
 const BoilForm = ({ brew, handleArray, id }) => {
-  const Console = prop => {
-    console[Object.keys(prop)[0]](...Object.values(prop))
-    return null
-  }
+  // const Console = prop => {
+  //   console[Object.keys(prop)[0]](...Object.values(prop))
+  //   return null
+  // }
   return (
     <Fragment>
-      <Console log={brew} />
+      {/* <Console log={brew} /> */}
       <BrewInput
         index={id}
         theme={{ width: '40%' }}
         placeholder="What did you add"
-        value={brew.boil[id] ? brew.boil[id].type : ''}
+        value={brew.postBoil[id] ? brew.postBoil[id].type : ''}
         name="type"
         onChange={(event) => handleArray(event, 'postBoil', id)}
       />
@@ -29,7 +29,7 @@ const BoilForm = ({ brew, handleArray, id }) => {
         index={id}
         theme={{ width: '40%' }}
         placeholder="How much did you add"
-        value={brew.boil[id] ? brew.boil[id].quant : ''}
+        value={brew.postBoil[id] ? brew.postBoil[id].quant : ''}
         name="quant"
         onChange={(event) => handleArray(event, 'postBoil', id)}
       />
