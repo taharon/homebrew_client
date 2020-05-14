@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SteepForm from './SteepForm'
 import BoilForm from './BoilForm'
+import PostBoilForm from './PostBoilForm'
 
 const BrewInput = styled.input`
   text-align: center;
@@ -45,6 +46,11 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
       setBrew({ ...brew, boil: [ ...brew.boil, { type: '', quant: '', duration: '' } ] })
     }
   }, [counter.boil])
+  useEffect(() => {
+    if (counter.postBoil) {
+      setBrew({ ...brew, postBoil: [ ...brew.postBoil, { type: '', quant: '' } ] })
+    }
+  }, [counter.postBoil])
   return (<FormBrew onSubmit={handleSubmit}>
     <BrewInput
       theme={{ width: '85%' }}
@@ -106,14 +112,14 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
     >
 
       <BrewInput
-        theme={{ width: '35' }}
+        theme={{ width: '35%' }}
         placeholder="Boil"
         disabled={true}
         style={{ 'fontSize': '25px' }}
       />
 
       <BrewInput
-        theme={{ width: '35' }}
+        theme={{ width: '35%' }}
         placeholder="Duration of Boil"
         value={brew.boilTime}
         name="boilTime"
@@ -132,8 +138,45 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
       })}
     </AddInputDiv>
 
-    <br></br>
+    <AddInputDiv
+      theme={{ width: '100%' }}
+    >
 
+      <BrewInput
+        theme={{ width: '60%' }}
+        placeholder="Post Boil"
+        disabled={true}
+        style={{ 'fontSize': '25px' }}
+      />
+
+      <input
+        type="button"
+        style={{ 'marginBottom': '10px' }}
+        value="Add something post boil"
+        onClick={() => addInput('postBoil')}
+      />
+
+      {brew.postBoil.map((child, i) => {
+        return (<PostBoilForm brew={brew} handleArray={handleArray} key={i} id={i} />)
+      })}
+
+      <BrewInput
+        theme={{ width: '85%' }}
+        placeholder="Primary duration"
+        value={brew.primary}
+        name="primary"
+        onChange={handleChange}
+      />
+
+      <BrewInput
+        theme={{ width: '85%' }}
+        placeholder="Secondary duration (if any)"
+        value={brew.secondary}
+        name="secondary"
+        onChange={handleChange}
+      />
+    </AddInputDiv>
+    <br></br>
     <button type="submit">Submit</button>
     <Link to={cancelPath}>
       <button>Cancel</button>

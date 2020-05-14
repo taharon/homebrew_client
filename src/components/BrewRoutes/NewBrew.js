@@ -6,7 +6,7 @@ import apiUrl from '../../apiConfig'
 
 const NewBrew = (props) => {
   // { type: '', time: '', quantity: '' } generically for all 3 (steep, boil, post)
-  const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { beerStyle: '', amount: '' }, steep: [], boilTime: '', boil: [], postBoil: [], tastingNotes: '' })
+  const [brew, setBrew] = useState({ name: '', dateStarted: '', style: { beerStyle: '', amount: '' }, steep: [], boilTime: '', boil: [], postBoil: [], primary: '', secondary: '', tastingNotes: '' })
   // const [createdBrew, setCreatedBrewId] = useState(null)
 
   const handleChange = (event, extra) => {
