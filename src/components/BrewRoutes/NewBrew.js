@@ -19,8 +19,18 @@ const NewBrew = (props) => {
   }
 
   const handleArray = (event, extra, index) => {
-    console.log(event.target.value)
-    setBrew({ ...brew, [extra]: { ...brew[extra][index], [event.target.name]: event.target.value } })
+    event.persist()
+    const updatedField = { ...brew[extra][index], [event.target.name]: event.target.value }
+    // { type: 'd', otherestuff }
+    setBrew(brew => {
+      const newArray = brew[extra].map((item, i) => {
+        if (i === index) {
+          item = updatedField
+        }
+        return item
+      })
+      return { ...brew, [extra]: newArray }
+    })
   }
 
   const handleSubmit = event => {

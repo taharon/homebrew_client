@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SteepForm from './SteepForm'
+import BoilForm from './BoilForm'
 
 const BrewInput = styled.input`
   text-align: center;
@@ -25,7 +26,6 @@ const AddInputDiv = styled.div`
 
 const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, cancelPath }) => {
   const [counter, setCounter] = useState({ steep: 0, boil: 0, postBoil: 0 })
-  const [children, setChildren] = useState([])
 
   // const Console = prop => {
   //   console[Object.keys(prop)[0]](...Object.values(prop))
@@ -36,19 +36,15 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
     setCounter(counter => ({ ...counter, [divName]: (counter[divName] + 1) }))
   }
   useEffect(() => {
-    async function createNewSteep () {
-      await setBrew({ ...brew, steep: [ ...brew.steep, { type: '', quant: '', duration: ' ' } ] })
-      console.log(brew, 'added child')
-      await setChildren(children => [...children, <SteepForm brew={brew} handleArray={handleArray} id={counter.steep} key={counter.steep} />])
-    }
-    try {
-      if (counter.steep !== 0) {
-        createNewSteep()
-      }
-    } catch (err) {
-      console.error(err)
+    if (counter.steep) {
+      setBrew({ ...brew, steep: [ ...brew.steep, { type: '', quant: '', duration: '' } ] })
     }
   }, [counter.steep])
+  useEffect(() => {
+    if (counter.boil) {
+      setBrew({ ...brew, boil: [ ...brew.boil, { type: '', quant: '', duration: '' } ] })
+    }
+  }, [counter.boil])
   return (<FormBrew onSubmit={handleSubmit}>
     <BrewInput
       theme={{ width: '85%' }}
@@ -90,7 +86,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         theme={{ width: '60%' }}
         placeholder="Steep"
         disabled={true}
-        fontSize='2em'
+        style={{ 'fontSize': '25px' }}
       />
 
       <input
@@ -100,9 +96,40 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         onClick={() => addInput('steep')}
       />
 
-      {children/* {children.map((child, i) => {
-        return (<SteepForm brew={child.brew} handleArray={handleArray} key={i} />)
-      })} */}
+      {brew.steep.map((child, i) => {
+        return (<SteepForm brew={brew} handleArray={handleArray} key={i} id={i} />)
+      })}
+    </AddInputDiv>
+
+    <AddInputDiv
+      theme={{ width: '100%' }}
+    >
+
+      <BrewInput
+        theme={{ width: '35' }}
+        placeholder="Boil"
+        disabled={true}
+        style={{ 'fontSize': '25px' }}
+      />
+
+      <BrewInput
+        theme={{ width: '35' }}
+        placeholder="Duration of Boil"
+        value={brew.boilTime}
+        name="boilTime"
+        onChange={(event) => handleChange(event)}
+      />
+
+      <input
+        type="button"
+        style={{ 'marginBottom': '10px' }}
+        value="Add something to the boil"
+        onClick={() => addInput('boil')}
+      />
+
+      {brew.boil.map((child, i) => {
+        return (<BoilForm brew={brew} handleArray={handleArray} key={i} id={i} />)
+      })}
     </AddInputDiv>
 
     <br></br>

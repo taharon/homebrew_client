@@ -8,7 +8,7 @@ const BrewInput = styled.input`
   margin-bottom: 10px;
 `
 
-const SteepForm = ({ brew, handleArray, id }) => {
+const BoilForm = ({ brew, handleArray, id }) => {
   const Console = prop => {
     console[Object.keys(prop)[0]](...Object.values(prop))
     return null
@@ -19,31 +19,31 @@ const SteepForm = ({ brew, handleArray, id }) => {
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
-        placeholder="What are you steeping"
-        value={brew.steep[id] ? brew.steep[id].type : ''}
+        placeholder="What did you add"
+        value={brew.boil[id].type}
         name="type"
-        onChange={(event) => handleArray(event, 'steep', id)}
+        onChange={(event) => handleArray(event, 'boil', id)}
       />
 
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
         placeholder="How much did you add"
-        value={brew.steep[id] ? brew.steep[id].quant : ''}
+        value={brew.boil[id] ? brew.boil[id].quant : ''}
         name="quant"
-        onChange={(event) => handleArray(event, 'steep', id)}
+        onChange={(event) => handleArray(event, 'boil', id)}
       />
 
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
-        placeholder="How long did you steep for"
-        value={brew.steep[id] ? brew.steep[id].duration : ''}
+        placeholder="How long did you boil for"
+        value={brew.boil[id] ? brew.boil[id].duration : ''}
         name="duration"
-        onChange={(event) => handleArray(event, 'steep', id)}
+        onChange={(event) => handleArray(event, 'boil', id)}
       />
     </Fragment>
   )
 }
 
-export default SteepForm
+export default BoilForm
