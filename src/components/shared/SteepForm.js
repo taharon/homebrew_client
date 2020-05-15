@@ -8,7 +8,7 @@ const BrewInput = styled.input`
   margin-bottom: 10px;
 `
 
-const SteepForm = ({ brew, handleArray, id }) => {
+const SteepForm = ({ brew, handleArray, id, edit }) => {
   // const Console = prop => {
   //   console[Object.keys(prop)[0]](...Object.values(prop))
   //   return null
@@ -17,6 +17,7 @@ const SteepForm = ({ brew, handleArray, id }) => {
     <Fragment>
       {/* <Console log={brew} /> */}
       <BrewInput
+        disabled={edit}
         index={id}
         theme={{ width: '30%' }}
         placeholder="What are you steeping"
@@ -28,6 +29,7 @@ const SteepForm = ({ brew, handleArray, id }) => {
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
+        disabled={edit}
         placeholder="How much did you add"
         value={brew.steep[id] ? brew.steep[id].quant : ''}
         name="quant"
@@ -37,6 +39,7 @@ const SteepForm = ({ brew, handleArray, id }) => {
       <BrewInput
         index={id}
         theme={{ width: '30%' }}
+        disabled={edit}
         placeholder="How long did you steep for"
         value={brew.steep[id] ? brew.steep[id].duration : ''}
         name="duration"

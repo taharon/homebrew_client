@@ -7,5 +7,6 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createBrewSuccess: 'Successfully saved your recipe!',
-  retrieveNoBrews: 'You have no brews saved!'
+  retrieveNoBrews: 'You have no brews saved!',
+  successfulDeletion: 'Recipe successfully removed!'
 }

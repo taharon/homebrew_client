@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import axios from 'axios'
 import messages from '../AutoDismissAlert/messages'
 import apiUrl from '../../apiConfig'
@@ -19,6 +19,14 @@ const ViewBrews = (props) => {
       },
       method: 'DELETE'
     })
+      .then(() => {
+        const { msgAlert } = props
+        msgAlert({
+          heading: 'Successfully Deleted!',
+          message: messages.successfulDeletion,
+          variant: 'danger'
+        })
+      })
       .then(() => setDeleted(!deleted))
       .catch(console.error)
   }
@@ -56,34 +64,18 @@ const ViewBrews = (props) => {
         <Card.Text>
           Brew started on: {brew.dateStarted}
         </Card.Text>
-        <Card.Link style={{ marginRight: '10px' }}href="#">View Recipe</Card.Link>
+        <Link to={ `/view-a-brew/${brew._id}` } style={{ marginRight: '10px' }}href="#">View Recipe</Link>
         <Button id={brew._id} onClick={destroy} variant="danger">Delete</Button>
       </Card.Body>
     </Card>
   ))
 
-  console.log(showBrews)
   console.log(brews)
   return (
     <div style={{ justifyContent: 'space-evenly', display: 'flex', flexWrap: 'wrap' }}>
       { showBrews }
     </div>
   )
-
-  // const moviesJsx = movies.map(movie => (
-  //   <li key={movie.id}>
-  //     <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-  //   </li>
-  // ))
-
-  // return (
-  //   <Layout>
-  //     <h4>Movies</h4>
-  //     <ul>
-  //       {moviesJsx}
-  //     </ul>
-  //   </Layout>
-  // )
 }
 
 export default withRouter(ViewBrews)
