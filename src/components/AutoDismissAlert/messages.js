@@ -1,5 +1,5 @@
 export default {
-  signUpSuccess: 'Succesfully registered! You\'ve been signed in as well.',
+  signUpSuccess: 'Successfully registered! You\'ve been signed in as well.',
   signUpFailure: 'Registration failed. Email may be taken, or passwords don\'t match.',
   signInSuccess: 'Welcome!',
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
@@ -8,5 +8,6 @@ export default {
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createBrewSuccess: 'Successfully saved your recipe!',
   retrieveNoBrews: 'You have no brews saved!',
-  successfulDeletion: 'Recipe successfully removed!'
+  successfulDeletion: 'Recipe successfully removed!',
+  submitSuccess: 'Successfully updated recipe!'
 }

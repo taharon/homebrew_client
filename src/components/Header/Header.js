@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#new-brew">New Recipe</Nav.Link>
-    <Nav.Link href="#view-brews">View All Recipes</Nav.Link>
+    <NavDropdown title='Account'>
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    </NavDropdown>
+    <NavDropdown title='Brews'>
+      <NavDropdown.Item href="#new-brew">New Recipe</NavDropdown.Item>
+      <NavDropdown.Item href="#view-brews">View All Recipes</NavDropdown.Item>
+    </NavDropdown>
   </Fragment>
 )
 
@@ -27,14 +32,14 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      react-auth-template
+      { 'Aegir\'s Corner' }
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
         { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
+        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
       </Nav>
     </Navbar.Collapse>
   </Navbar>

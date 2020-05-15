@@ -182,7 +182,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         onChange={handleChange}
       />
     </AddInputDiv>
-    <AddInputDiv>
+    <AddInputDiv theme={{ width: '100%' }}>
       <CreatorComment
         rows='5'
         cols='90'
@@ -192,7 +192,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
         onChange={handleChange}
       />
     </AddInputDiv>
-    <Form.Group>
+    <Form.Group style={{ width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
       <button type="submit">{'\n'}Submit</button>
       <Link to={cancelPath}>
         <button>Cancel</button>

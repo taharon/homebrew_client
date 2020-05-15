@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import ViewABrewForm from '../shared/ViewABrewForm'
+import messages from '../AutoDismissAlert/messages'
 
 const ViewABrew = (props) => {
   const [brew, setBrew] = useState({})
@@ -33,19 +34,19 @@ const ViewABrew = (props) => {
   // edit function
   const handleSubmit = event => {
     event.preventDefault()
+    const { id } = props.match.params
     const { msgAlert } = props
     axios({
-      url: `${apiUrl}/brews`,
+      url: `${apiUrl}/brews/${id}`,
       headers: {
         'Authorization': `Token token=${props.user.token}`
       },
-      method: 'POST',
+      method: 'PATCH',
       data: { brew }
     })
       .then(() => msgAlert({
         heading: 'Success!',
-        // message: messages.createBrewSuccess,
-        message: 'temporary message',
+        message: messages.submitSuccess,
         variant: 'success'
       }))
       .catch(console.error)
