@@ -69,6 +69,7 @@ const BrewForm = ({ brew, setBrew, handleArray, handleSubmit, handleChange, canc
     <BrewInput
       theme={{ width: '85%' }}
       placeholder="When did you start"
+      type='date'
       value={brew.dateStarted}
       name="dateStarted"
       onChange={handleChange}
