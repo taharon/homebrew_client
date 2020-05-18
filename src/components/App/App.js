@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import styled from 'styled-components'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -11,6 +12,18 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import NewBrew from '../BrewRoutes/NewBrew'
 import ViewBrews from '../BrewRoutes/ViewBrews'
 import ViewABrew from '../BrewRoutes/ViewABrew'
+// import SideHeader from '../Header/SideHeader'
+
+const FullPage = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+flexWrap: wrap;
+`
+const mainPage = styled.main`
+width: 80%;
+backgroundImage: url(../../../public/background_beer.jpg);
+`
 
 class App extends Component {
   constructor () {
@@ -34,8 +47,8 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <Fragment>
-        <Header user={user} />
+      <FullPage>
+        <Header style={{ width: '20%' }} user={user} />
         {msgAlerts.map((msgAlert, index) => (
           <AutoDismissAlert
             key={index}
@@ -44,7 +57,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
-        <main className="container">
+        <mainPage >
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -66,8 +79,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/view-a-brew/:id' render={() => (
             <ViewABrew user={user} msgAlert={this.msgAlert}/>
           )} />
-        </main>
-      </Fragment>
+        </mainPage>
+      </FullPage>
     )
   }
 }

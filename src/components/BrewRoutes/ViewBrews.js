@@ -64,7 +64,7 @@ const ViewBrews = (props) => {
         <Card.Text>
           Brew started on: {brew.dateStarted}
         </Card.Text>
-        <Link to={ `/view-a-brew/${brew._id}` } style={{ marginRight: '10px' }}href="#">View Recipe</Link>
+        <Link to={ `/view-a-brew/${brew._id}` } style={{ marginRight: '10px' }}href="#"><Button variant="primary">View Recipe</Button></Link>
         <Button id={brew._id} onClick={destroy} variant="danger">Delete</Button>
       </Card.Body>
     </Card>
