@@ -5,7 +5,8 @@ import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+
+import SubmitButton from '../shared/SubmitButton'
 
 class SignUp extends Component {
   constructor () {
@@ -55,9 +56,9 @@ class SignUp extends Component {
           <h3>Sign Up</h3>
           <Form onSubmit={this.onSignUp}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
               <Form.Control
                 required
+                style={{ background: '#D5DBDA' }}
                 type="email"
                 name="email"
                 value={email}
@@ -66,9 +67,9 @@ class SignUp extends Component {
               />
             </Form.Group>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
               <Form.Control
                 required
+                style={{ background: '#D5DBDA' }}
                 name="password"
                 value={password}
                 type="password"
@@ -77,9 +78,9 @@ class SignUp extends Component {
               />
             </Form.Group>
             <Form.Group controlId="passwordConfirmation">
-              <Form.Label>Password Confirmation</Form.Label>
               <Form.Control
                 required
+                style={{ background: '#D5DBDA' }}
                 name="passwordConfirmation"
                 value={passwordConfirmation}
                 type="password"
@@ -87,12 +88,12 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button
+            <SubmitButton
               variant="primary"
               type="submit"
             >
               Submit
-            </Button>
+            </SubmitButton>
           </Form>
         </div>
       </div>

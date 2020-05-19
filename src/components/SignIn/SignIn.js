@@ -5,15 +5,15 @@ import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import SubmitButton from '../shared/SubmitButton'
 
 class SignIn extends Component {
   constructor () {
     super()
 
     this.state = {
-      email: '',
-      password: ''
+      email: 't1@t1',
+      password: 't1'
     }
   }
 
@@ -53,8 +53,8 @@ class SignIn extends Component {
           <h3>Sign In</h3>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
               <Form.Control
+                style={{ background: '#D5DBDA' }}
                 required
                 type="email"
                 name="email"
@@ -64,8 +64,8 @@ class SignIn extends Component {
               />
             </Form.Group>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
               <Form.Control
+                style={{ background: '#D5DBDA' }}
                 required
                 name="password"
                 value={password}
@@ -74,12 +74,11 @@ class SignIn extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button
-              variant="primary"
+            <SubmitButton
               type="submit"
             >
               Submit
-            </Button>
+            </SubmitButton>
           </Form>
         </div>
       </div>

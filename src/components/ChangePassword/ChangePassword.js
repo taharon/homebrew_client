@@ -5,7 +5,7 @@ import { changePassword } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import SubmitButton from '../shared/SubmitButton'
 
 class ChangePassword extends Component {
   constructor () {
@@ -52,8 +52,8 @@ class ChangePassword extends Component {
           <h3>Change Password</h3>
           <Form onSubmit={this.onChangePassword}>
             <Form.Group controlId="oldPassword">
-              <Form.Label>Old password</Form.Label>
               <Form.Control
+                style={{ background: '#D5DBDA' }}
                 required
                 name="oldPassword"
                 value={oldPassword}
@@ -63,8 +63,8 @@ class ChangePassword extends Component {
               />
             </Form.Group>
             <Form.Group controlId="newPassword">
-              <Form.Label>New Password</Form.Label>
               <Form.Control
+                style={{ background: '#D5DBDA' }}
                 required
                 name="newPassword"
                 value={newPassword}
@@ -73,12 +73,11 @@ class ChangePassword extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button
-              variant="primary"
+            <SubmitButton
               type="submit"
             >
               Submit
-            </Button>
+            </SubmitButton>
           </Form>
         </div>
       </div>

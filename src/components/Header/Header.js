@@ -44,9 +44,8 @@ const Header = ({ user }) => {
           <Link to={'/sign-out'} style={{ 'color': '#939B9F' }}>Sign Out</Link>
         </div>
       </Collapse>
-      <br />
       <Button
-        style={{ backgroundColor: '#CEB2DF', color: 'text-secondary' }}
+        style={{ backgroundColor: '#CEB2DF', color: 'text-secondary', marginTop: '15px' }}
         variant='outline-secondary'
         onClick={() => setOpenBrew(!openBrew)}
         aria-controls="collapse-Brew"
@@ -72,7 +71,7 @@ const Header = ({ user }) => {
 
   return (<Navbar bg="dark" variant="dark" expand="md" style={{ display: 'block' }}>
     <Navbar.Brand style={{ width: '100%', textAlign: 'center' }}>
-      { 'Aegir\'s Corner' }
+      { 'Ægir\'s Corner' }
     </Navbar.Brand>
     <Nav className="ml-auto">
       { alwaysOptions }

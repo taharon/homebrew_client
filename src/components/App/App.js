@@ -12,7 +12,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import NewBrew from '../BrewRoutes/NewBrew'
 import ViewBrews from '../BrewRoutes/ViewBrews'
 import ViewABrew from '../BrewRoutes/ViewABrew'
-// import SideHeader from '../Header/SideHeader'
+import bgImg from '../../assets/background_beer.jpg'
 
 const FullPage = styled.div`
 width: 100%;
@@ -20,9 +20,12 @@ height: 100%;
 display: flex;
 flexWrap: wrap;
 `
-const mainPage = styled.main`
-width: 80%;
-backgroundImage: url(../../../public/background_beer.jpg);
+
+const MainPage = styled.main`
+background-image: url(${bgImg});
+background-position: center;
+background-size: cover;
+width: 100%;
 `
 
 class App extends Component {
@@ -57,7 +60,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
-        <mainPage >
+        <MainPage >
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -79,7 +82,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/view-a-brew/:id' render={() => (
             <ViewABrew user={user} msgAlert={this.msgAlert}/>
           )} />
-        </mainPage>
+        </MainPage>
       </FullPage>
     )
   }
