@@ -24,9 +24,9 @@
 ## My Journey
 
   I began with wireframes for the layout of the client side, in order to get an idea for what the forms should contain. Once
-  I established a solid idea of what resources I needed for the forms, I created the routes and a model which expected the exact same data.
+  I established a solid idea of what resources I needed for the forms, built the ERD out of the exact same data, which allowed me to I created the routes and a model which expected the exact same data.
   This allowed me to quickly and easily create the API side of my app, and then move back to tackling the meat of my project, the dynamic addition of forms. This required a lot of research, as it is not straightforward to dynamically add to state variables in react, especially such deeply nested ones. As always, I turned first to stackoverflow, however I was unable to find a clear answer to my problem. I eventually reached out to the instructors after being unable to solve it myself.
-
+  
 ## User Stories
 
     * As an unregistered user, I'd like to register
