@@ -5,8 +5,8 @@
 
 ## Links
 
-  ![Deployed Application](https://taharon.github.io/homebrew_client/#/)
-  ![API Repository](https://github.com/taharon/homebrew_api)
+  [Deployed Application](https://taharon.github.io/homebrew_client/#/)  
+  [API Repository](https://github.com/taharon/homebrew_api)  
 
 ## Technologies
 
