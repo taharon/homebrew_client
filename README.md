@@ -45,8 +45,8 @@
 
 ## Wireframe
 
-  ![Initial Wireframe](https://imgur.com/FGD9iK7)
+  [Initial Wireframe](https://i.imgur.com/FGD9iK7.jpg)
 
 ## Application Photo
 
-  [List of brews](https://i.imgur.com/wszLR1C.png)
+  ![List of brews](https://i.imgur.com/wszLR1C.png)
