@@ -35,7 +35,6 @@ const NewBrew = (props) => {
   const handleSubmit = event => {
     event.preventDefault()
     const { msgAlert } = props
-    console.log(brew)
     axios({
       url: `${apiUrl}/brews`,
       headers: {
@@ -44,7 +43,7 @@ const NewBrew = (props) => {
       method: 'POST',
       data: { brew }
     })
-      .then(res => { console.log(res); setCreatedBrewId(res.data.brew._id) })
+      .then(res => setCreatedBrewId(res.data.brew._id) )
       .then(() => msgAlert({
         heading: 'Success!',
         message: messages.createBrewSuccess,

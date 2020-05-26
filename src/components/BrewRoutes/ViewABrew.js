@@ -69,9 +69,7 @@ const ViewABrew = (props) => {
       method: 'GET'
     })
       .then(res => {
-        console.log(res.data.brew)
         setBrew(res.data.brew)
-        console.log(res.data, 'data from api')
       })
       .catch(console.error)
   }, [edit])

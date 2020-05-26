@@ -32,7 +32,6 @@ const AddInputDiv = styled.div`
 `
 
 const BrewForm = ({ brew, handleArray, handleSubmit, handleChange, edit, cancelPath, mode }) => {
-  console.log(brew)
   // const counter = { steep: brew.steep.length, boil: brew.boil.length, postBoil: brew.postBoil.length }
 
   // const addInput = (divName) => {

@@ -108,7 +108,6 @@ const ViewBrews = (props) => {
     </PrettyCard>
   ))
 
-  console.log(brews)
   return (
     <div style={{ justifyContent: 'space-evenly', display: 'flex', flexWrap: 'wrap' }}>
       { showBrews }
